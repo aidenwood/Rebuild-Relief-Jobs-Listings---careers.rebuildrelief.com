@@ -1,28 +1,9 @@
-import { supabase } from "@/lib/supabase";
+import { getActiveJobs } from "@/lib/jobs";
 import { JobCard } from "@/components/job-card";
-import type { Job } from "@/lib/types";
-import { seedJobs } from "@/lib/seed-data";
 import { Briefcase, Users, Home, TrendingUp } from "lucide-react";
 
-export const revalidate = 60;
-
-async function getJobs(): Promise<Job[]> {
-  const { data, error } = await supabase
-    .from("jobs")
-    .select("*")
-    .eq("status", "active")
-    .order("created_at", { ascending: false });
-
-  if (error || !data || data.length === 0) {
-    // Fall back to seed data when Supabase isn't connected
-    return seedJobs;
-  }
-
-  return data;
-}
-
-export default async function HomePage() {
-  const jobs = await getJobs();
+export default function HomePage() {
+  const jobs = getActiveJobs();
 
   return (
     <>

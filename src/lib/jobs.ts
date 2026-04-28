@@ -1,8 +1,12 @@
 import type { Job } from "./types";
 
-export const seedJobs: Job[] = [
+/**
+ * Static job listings — edit this array to add/remove/update positions.
+ * No database needed. Redeploy after changes.
+ */
+export const jobs: Job[] = [
   {
-    id: "seed-1",
+    id: "1",
     title: "Sales Representative",
     slug: "sales-representative-penrith-sydney-nsw",
     location: "Penrith, Sydney NSW (Hybrid)",
@@ -86,13 +90,14 @@ Want to earn well while helping people
 Ready to Apply?
 If you're motivated, competitive, and want to build a high-income career while helping families recover from storm damage — apply now.
 Join a team where effort is rewarded and opportunity is real.`,
-    seek_url: "https://www.seek.com.au/Rebuild-Relief-jobs/at-this-company?jobId=91660046&type=standard",
+    seek_url:
+      "https://www.seek.com.au/Rebuild-Relief-jobs/at-this-company?jobId=91660046&type=standard",
     status: "active",
     created_at: "2026-04-22T00:00:00Z",
     updated_at: "2026-04-22T00:00:00Z",
   },
   {
-    id: "seed-2",
+    id: "2",
     title: "Inbound Sales Coordinator",
     slug: "inbound-sales-coordinator-arundel-gold-coast-qld",
     location: "Arundel, Gold Coast QLD",
@@ -128,13 +133,14 @@ Recognition, respect, and rewards for your hustle and talent.
 Ready to Step Up?
 If you've got the drive, we've got the opportunity.
 Click Apply Now, attach your CV, and take the first step toward the career, and life you know you're capable of.`,
-    seek_url: "https://www.seek.com.au/Rebuild-Relief-jobs/at-this-company",
+    seek_url:
+      "https://www.seek.com.au/Rebuild-Relief-jobs/at-this-company?jobId=91616050&type=standard",
     status: "active",
     created_at: "2026-04-21T00:00:00Z",
     updated_at: "2026-04-21T00:00:00Z",
   },
   {
-    id: "seed-3",
+    id: "3",
     title: "Customer Engagement Coordinator",
     slug: "customer-engagement-coordinator-arundel-gold-coast-qld",
     location: "Arundel, Gold Coast QLD",
@@ -162,13 +168,14 @@ Converting enquiries into qualified opportunities through structured conversatio
 Maintaining accurate records and managing your pipeline with strong attention to detail
 Following up consistently to keep customers moving forward
 Working closely with internal teams to ensure a smooth customer experience`,
-    seek_url: "https://www.seek.com.au/Rebuild-Relief-jobs/at-this-company",
+    seek_url:
+      "https://www.seek.com.au/Rebuild-Relief-jobs/at-this-company?jobId=91366162&type=standard",
     status: "active",
     created_at: "2026-04-08T00:00:00Z",
     updated_at: "2026-04-08T00:00:00Z",
   },
   {
-    id: "seed-4",
+    id: "4",
     title: "Sales Representative",
     slug: "sales-representative-gympie-hervey-bay-qld",
     location: "Gympie, Hervey Bay & Fraser Coast QLD (Hybrid)",
@@ -229,13 +236,14 @@ You are NOT expected to pressure sell or request money. Our service starts with 
 Ready to Step Up?
 If you've got the drive, we've got the opportunity.
 Click Apply Now, attach your CV, and take the first step toward the career, and life you know you're capable of.`,
-    seek_url: "https://www.seek.com.au/Rebuild-Relief-jobs/at-this-company",
+    seek_url:
+      "https://www.seek.com.au/Rebuild-Relief-jobs/at-this-company?jobId=91279213&type=standard",
     status: "active",
     created_at: "2026-04-02T00:00:00Z",
     updated_at: "2026-04-02T00:00:00Z",
   },
   {
-    id: "seed-5",
+    id: "5",
     title: "Sales Representative",
     slug: "sales-representative-gatton-somerset-lockyer-qld",
     location: "Gatton, Somerset & Lockyer QLD (Hybrid)",
@@ -294,9 +302,18 @@ You are NOT expected to pressure sell or request money. Our service starts with 
 Ready to Step Up?
 If you've got the drive, we've got the opportunity.
 Click Apply Now, attach your CV, and take the first step toward the career, and life you know you're capable of.`,
-    seek_url: "https://www.seek.com.au/Rebuild-Relief-jobs/at-this-company",
+    seek_url:
+      "https://www.seek.com.au/Rebuild-Relief-jobs/at-this-company?jobId=91308250&type=standard",
     status: "active",
     created_at: "2026-04-03T00:00:00Z",
     updated_at: "2026-04-03T00:00:00Z",
   },
 ];
+
+export function getActiveJobs(): Job[] {
+  return jobs.filter((j) => j.status === "active");
+}
+
+export function getJobBySlug(slug: string): Job | null {
+  return jobs.find((j) => j.slug === slug) ?? null;
+}

@@ -1,5 +1,4 @@
-import { supabase } from "@/lib/supabase";
-import { seedJobs } from "@/lib/seed-data";
+import { getActiveJobs, getJobBySlug } from "@/lib/jobs";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -13,31 +12,19 @@ import {
   ArrowLeft,
 } from "lucide-react";
 import Link from "next/link";
-import type { Job } from "@/lib/types";
 import { JobDescription } from "@/components/job-description";
-
-export const revalidate = 60;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-async function getJobBySlug(slug: string): Promise<Job | null> {
-  const { data } = await supabase
-    .from("jobs")
-    .select("*")
-    .eq("slug", slug)
-    .single<Job>();
-
-  if (data) return data;
-
-  // Fall back to seed data
-  return seedJobs.find((j) => j.slug === slug) ?? null;
+export function generateStaticParams() {
+  return getActiveJobs().map((job) => ({ slug: job.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
-  const job = await getJobBySlug(slug);
+  const job = getJobBySlug(slug);
 
   if (!job) return { title: "Job Not Found | Rebuild Relief" };
 
@@ -49,7 +36,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function JobPage({ params }: PageProps) {
   const { slug } = await params;
-  const job = await getJobBySlug(slug);
+  const job = getJobBySlug(slug);
 
   if (!job) notFound();
 
