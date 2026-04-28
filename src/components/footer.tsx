@@ -33,9 +33,9 @@ export function Footer() {
               </div>
             </div>
             <p className="text-sm leading-relaxed">
-              Australia&apos;s fastest-growing storm and hail damage recovery
+              A rapidly growing Australian storm and hail damage recovery
               company. 3,000+ homes restored. $150M+ in insurance claims
-              approved across NSW &amp; QLD.
+              managed across NSW &amp; QLD.
             </p>
             <div className="flex flex-wrap gap-x-5 gap-y-2 pt-1 text-xs text-white/50">
               <span className="flex items-center gap-1.5">

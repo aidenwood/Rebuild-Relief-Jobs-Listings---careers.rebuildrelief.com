@@ -39,23 +39,32 @@ export default function HomePage() {
           <source src="/hero-video.mp4" type="video/mp4" />
         </video>
 
+        {/* Gradient overlay for text readability */}
+        <div
+          className="absolute inset-0 z-[1]"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(0,27,81,0.92) 0%, rgba(0,27,81,0.7) 40%, rgba(0,27,81,0.25) 70%, transparent 100%), linear-gradient(to top, rgba(0,27,81,0.8) 0%, transparent 50%)",
+          }}
+        />
+
         <div className="relative z-[2] w-full px-6 py-20 sm:px-10 sm:py-28 lg:px-16">
           <div className="max-w-2xl space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-white backdrop-blur-sm">
               <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
               Now Hiring Across NSW &amp; QLD
             </div>
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+            <h1 className="text-4xl font-bold tracking-tight text-white mix-blend-difference sm:text-5xl lg:text-6xl xl:text-7xl">
               Build Your Career.
               <br />
               <span className="text-white/80">Rebuild Communities.</span>
             </h1>
-            <p className="max-w-lg text-lg text-white/70 sm:text-xl">
-              Join one of Australia&apos;s fastest-growing storm recovery
-              companies. Help families restore their homes while earning a
-              six-figure income.
+            <p className="max-w-lg text-lg text-white/70 mix-blend-difference sm:text-xl">
+              Join a rapidly growing Australian storm recovery company.
+              Help families restore their homes — with the potential to
+              earn a six-figure income.
             </p>
-            <div className="flex flex-wrap gap-6 pt-2">
+            <div className="flex flex-wrap gap-6 pt-2 mix-blend-difference">
               <div className="flex items-center gap-2 text-sm text-white/80">
                 <Home className="h-4 w-4" />
                 3,000+ homes restored
@@ -66,7 +75,7 @@ export default function HomePage() {
               </div>
               <div className="flex items-center gap-2 text-sm text-white/80">
                 <TrendingUp className="h-4 w-4" />
-                $150M+ claims approved
+                $150M+ in claims managed
               </div>
             </div>
             <div className="flex flex-wrap gap-3 pt-2">
@@ -94,8 +103,8 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-4 px-4 py-6 sm:grid-cols-4 sm:px-6">
           {[
             { label: "Base Salary", value: "$70k+" },
-            { label: "OTE First Year", value: "$100–150k" },
-            { label: "Top Month Earnings", value: "$20k+" },
+            { label: "First Year OTE (Top Performers)", value: "$100–150k" },
+            { label: "Top Monthly Earnings*", value: "$20k+" },
             { label: "Full Training", value: "Provided" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
@@ -165,7 +174,7 @@ export default function HomePage() {
               {
                 icon: TrendingUp,
                 title: "Uncapped Commissions",
-                desc: "Most first-year reps earn $100k–$150k. Top performers clear $20k+ in a single month. There is no ceiling on what you take home.",
+                desc: "Top-performing first-year reps have earned $100k–$150k. Our highest earners have cleared $20k+ in a single month. There is no ceiling on what you can take home.",
                 color: "text-brand-green",
               },
               {
@@ -177,7 +186,7 @@ export default function HomePage() {
               {
                 icon: Target,
                 title: "Company-Generated Leads",
-                desc: "We send you to storm-affected areas with qualified leads. You're not cold-calling strangers — homeowners need this service.",
+                desc: "You'll work in storm-affected areas with company-provided leads, reaching homeowners who may need this service.",
                 color: "text-brand-cyan-bright",
               },
               {
@@ -219,9 +228,9 @@ export default function HomePage() {
               </h2>
               <ul className="space-y-4">
                 {[
-                  "Cold-calling people who don't want to hear from you",
+                  "Making phone calls from purchased lead lists",
                   "Asking homeowners for credit cards or upfront money",
-                  "Selling overpriced products nobody needs",
+                  "Selling products people didn't ask for",
                   "Sitting behind a desk sending emails all day",
                   "Working alone with zero support or training",
                   "Begging people to buy charity subscriptions or solar",
@@ -241,8 +250,8 @@ export default function HomePage() {
               <ul className="space-y-4">
                 {[
                   "Inspecting roofs for hail and storm damage in areas we send you to",
-                  "Offering homeowners a free inspection — they pay nothing",
-                  "Helping families access insurance-funded repairs they didn't know they could claim",
+                  "Offering homeowners a free roof inspection",
+                  "Helping families explore whether their insurance covers storm damage repairs",
                   "Working outdoors with a competitive, high-energy team",
                   "Earning commissions on every deal you close — no cap, ever",
                   "Building a real career with clear progression into leadership",
@@ -277,7 +286,7 @@ export default function HomePage() {
               "You'd rather be outside talking to people than stuck behind a screen",
               "You're competitive — you want to be the top earner, not the average",
               "You're comfortable on a roof and not afraid of physical work",
-              "You want a $100k+ income and you're willing to earn it",
+              "You want the opportunity to earn $100k+ and you're willing to work for it",
               "You believe in helping people, not pressuring them",
             ].map((item) => (
               <div
@@ -357,27 +366,29 @@ export default function HomePage() {
                 <strong className="text-foreground">
                   uncapped commissions
                 </strong>{" "}
-                on every deal you close. Most first-year reps at Rebuild Relief
-                earn between $100,000 and $150,000. Our top performers
-                consistently clear $20,000+ in a single month.
+                on every deal you close. Top-performing first-year reps at
+                Rebuild Relief have earned between $100,000 and $150,000.
+                Our highest earners have cleared $20,000+ in a single month.
               </p>
               <p>
                 You&apos;re not selling something people don&apos;t want.
                 Homeowners across NSW and QLD have storm-damaged roofs right
-                now. Their insurance covers the repairs. In many cases, Rebuild
-                Relief even covers up to $600 of their excess. Your job is to
-                help them access what they&apos;re already entitled to.
+                now. Their insurance may cover the repairs. Where eligible,
+                Rebuild Relief may also cover up to $600 of the homeowner&apos;s
+                excess. Your job is to help them explore what their policy
+                may cover.
               </p>
               <p>
                 That&apos;s why this isn&apos;t a hard sell. It&apos;s a
                 conversation with a homeowner who already has the problem and
-                already has the solution — they just need someone to show them
-                how to claim it.
+                may already be covered — they just need someone to guide them
+                through the process.
               </p>
               <p className="text-foreground font-medium pt-2">
                 If you&apos;re doing $50k–$70k in a traditional sales job,
-                retail, or trades — and you want to double your income within
-                12 months without going back to uni — this is how.
+                retail, or trades — and you want the opportunity to
+                significantly grow your income without going back to uni —
+                this is how people are doing it.
               </p>
             </div>
           </div>
@@ -398,7 +409,7 @@ export default function HomePage() {
               },
               {
                 q: "What does a storm damage sales representative actually do?",
-                a: "You visit properties in storm-affected areas, inspect roofs for hail damage, explain our free service to homeowners, and help them start an insurance claim for repairs. You're outdoors, talking to real people, solving a real problem. No cold calling. No desk.",
+                a: "You visit properties in storm-affected areas, inspect roofs for hail damage, explain our service to homeowners, and help them start an insurance claim for repairs. You're outdoors, talking to real people, solving a real problem. No phone cold-calling from purchased lists. No desk.",
               },
               {
                 q: "Is this a commission-only role?",
@@ -406,15 +417,15 @@ export default function HomePage() {
               },
               {
                 q: "Where are Rebuild Relief jobs located?",
-                a: "We're currently hiring across New South Wales and Queensland — including Penrith (Sydney), Gold Coast (Arundel), Gympie, Hervey Bay, Fraser Coast, Gatton, Somerset, and the Lockyer Valley. We also send teams to major storm zones across Australia for high-earning travel trips.",
+                a: "We're currently hiring across New South Wales and Queensland — including Penrith (Sydney), Gold Coast (Arundel), Gympie, Hervey Bay, Fraser Coast, Gatton, Somerset, and the Lockyer Valley. We also send teams to major storm zones across Australia for travel opportunities.",
               },
               {
                 q: "What's the difference between this and door-to-door sales?",
-                a: "In door-to-door sales, you're typically selling something people didn't ask for. Here, you're offering homeowners a free roof inspection and helping them access insurance-funded repairs they're already entitled to. We often cover up to $600 of their excess. You're not asking for money — you're giving them money.",
+                a: "In door-to-door sales, you're typically selling something people didn't ask for. Here, you're offering homeowners a free roof inspection and helping them explore whether their insurance covers storm damage repairs. Where eligible, we may cover up to $600 of the homeowner's excess. You're not asking for money — you're helping them access repairs their insurer may already cover.",
               },
               {
                 q: "How quickly can I start earning commissions?",
-                a: "Most reps start closing deals within their first few weeks after training. You'll be paired with experienced team members, given company-generated leads, and sent to areas with confirmed storm damage. The opportunity is there from the start.",
+                a: "New reps can begin closing deals within their first few weeks after training. You'll be paired with experienced team members, given company-generated leads, and sent to areas with confirmed storm damage. The opportunity is there from the start.",
               },
             ].map((faq) => (
               <div key={faq.q} className="space-y-2">

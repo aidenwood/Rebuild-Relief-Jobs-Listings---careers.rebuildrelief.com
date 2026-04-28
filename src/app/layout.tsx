@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Rebuild Relief Careers",
   },
   description:
-    "Join Rebuild Relief — Australia's fastest-growing storm and hail damage recovery company. Browse open sales, coordination, and field roles across NSW & QLD. $70k base + uncapped commissions.",
+    "Join Rebuild Relief — a rapidly growing Australian storm and hail damage recovery company. Browse open sales, coordination, and field roles across NSW & QLD. $70k base + uncapped commissions.",
   keywords: [
     "Rebuild Relief careers",
     "Rebuild Relief jobs",
@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     siteName: "Rebuild Relief Careers",
     title: "Careers at Rebuild Relief — Storm Recovery Jobs Across Australia",
     description:
-      "Help families recover after storms while earning $100k–$150k+. Browse open positions in sales, customer engagement, and field operations across NSW & QLD.",
+      "Help families recover after storms with earning potential of $100k–$150k+. Browse open positions in sales, customer engagement, and field operations across NSW & QLD.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Careers at Rebuild Relief",
     description:
-      "Join Australia's fastest-growing storm recovery company. $70k base + uncapped commissions.",
+      "Join a rapidly growing Australian storm recovery company. $70k base + uncapped commissions.",
   },
   robots: {
     index: true,
