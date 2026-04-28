@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAuthenticated } from "@/lib/auth";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 interface RouteContext {
   params: Promise<{ id: string }>;
@@ -14,7 +14,7 @@ export async function PUT(request: NextRequest, context: RouteContext) {
   const { id } = await context.params;
   const body = await request.json();
 
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("jobs")
     .update({ ...body, updated_at: new Date().toISOString() })
     .eq("id", id)
@@ -35,7 +35,7 @@ export async function DELETE(_request: NextRequest, context: RouteContext) {
 
   const { id } = await context.params;
 
-  const { error } = await supabase.from("jobs").delete().eq("id", id);
+  const { error } = await getSupabase().from("jobs").delete().eq("id", id);
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });

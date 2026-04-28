@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isAuthenticated } from "@/lib/auth";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 function slugify(text: string): string {
   return text
@@ -10,7 +10,7 @@ function slugify(text: string): string {
 }
 
 export async function GET() {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("jobs")
     .select("*")
     .order("created_at", { ascending: false });
@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
   const body = await request.json();
   const slug = slugify(body.title) + "-" + slugify(body.location);
 
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("jobs")
     .insert({
       ...body,

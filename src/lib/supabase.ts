@@ -1,7 +1,16 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+let _supabase: SupabaseClient | null = null;
 
-/** Only used by admin API routes — public pages use static data from jobs.ts */
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+/** Lazy-initialised Supabase client — only used by admin API routes. */
+export function getSupabase(): SupabaseClient {
+  if (!_supabase) {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (!url || !key) {
+      throw new Error("Supabase env vars not set");
+    }
+    _supabase = createClient(url, key);
+  }
+  return _supabase;
+}
